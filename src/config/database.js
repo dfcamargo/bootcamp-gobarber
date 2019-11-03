@@ -1,8 +1,8 @@
 module.exports = {
-  dialect: 'mariadb',
+  dialect: 'postgres',
   host: 'localhost',
-  username: 'root',
-  password: '',
+  username: 'postgres',
+  password: 'docker',
   database: 'gobarber',
   define: {
     timestamps: true,

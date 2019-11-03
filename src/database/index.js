@@ -32,8 +32,7 @@ class Database {
 
   mongoInit() {
     this.mongoConnection = mongoose.connect(
-      'mongodb+srv://omnistack:omnistack@omnistack-eboyh.mongodb.net/gobarber?retryWrites=true&w=majority',
-      { useNewUrlParser: true, useFindAndModify: true },
+      'mongodb://localhost:27017/gobarber', { useNewUrlParser: true, useFindAndModify: true },
     );
   }
 }
