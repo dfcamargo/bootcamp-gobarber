@@ -18,7 +18,7 @@ class AppointmentController {
     const appointments = await Appointment.findAll({
       where: { user_id: req.userId, canceled_at: null },
       order: ['date'],
-      attributes: ['id', 'date'],
+      attributes: ['id', 'date', 'past', 'cancelable'],
       limit: 20,
       offset: (page - 1) * 20,
       include: [
@@ -55,9 +55,13 @@ class AppointmentController {
     /*
       Verifica se o "provider_id" é um provedor
     */
-    const isProvider = await User.findOne({ where: { id: provider_id, provider: true } });
+    const isProvider = await User.findOne({
+      where: { id: provider_id, provider: true },
+    });
     if (!isProvider) {
-      return res.status(401).json({ error: 'You can only create appointments with providers' });
+      return res
+        .status(401)
+        .json({ error: 'You can only create appointments with providers' });
     }
 
     /*
@@ -79,7 +83,9 @@ class AppointmentController {
       },
     });
     if (checkAvailability) {
-      return res.status(400).json({ error: 'Appointment date is not avaliable' });
+      return res
+        .status(400)
+        .json({ error: 'Appointment date is not avaliable' });
     }
 
     const appointment = await Appointment.create({
@@ -92,7 +98,11 @@ class AppointmentController {
      * Notificação do provider
      */
     const user = await User.findByPk(req.userId);
-    const formattedDate = format(hourStart, "'dia' dd 'de' MMMM', às' H:mm'h'", { locale: pt });
+    const formattedDate = format(
+      hourStart,
+      "'dia' dd 'de' MMMM', às' H:mm'h'",
+      { locale: pt }
+    );
 
     await Notification.create({
       content: `Novo agendamento de ${user.name} para ${formattedDate}`,
