@@ -26,14 +26,18 @@ class Database {
     this.connection = new Sequelize(databaseConfig);
 
     models
-      .map((model) => model.init(this.connection))
-      .map((model) => (model && model.associate && model.associate(this.connection.models)));
+      .map(model => model.init(this.connection))
+      .map(
+        model =>
+          model && model.associate && model.associate(this.connection.models)
+      );
   }
 
   mongoInit() {
-    this.mongoConnection = mongoose.connect(
-      process.env.MONGO_URL, { useNewUrlParser: true, useFindAndModify: true },
-    );
+    this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useFindAndModify: true,
+    });
   }
 }
 

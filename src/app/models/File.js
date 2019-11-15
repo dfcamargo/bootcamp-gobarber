@@ -12,11 +12,10 @@ class File extends Model {
             return `${process.env.APP_URL}/files/${this.path}`;
           },
         },
-
       },
       {
         sequelize,
-      },
+      }
     );
   }
 }
