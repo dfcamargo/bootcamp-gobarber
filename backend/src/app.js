@@ -2,6 +2,7 @@ import 'dotenv/config';
 
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 import Youch from 'youch';
 import * as Sentry from '@sentry/node';
 import 'express-async-errors';
@@ -36,6 +37,7 @@ class App {
   }
 
   middlewares() {
+    this.server.use(cors());
     this.server.use(express.json());
     // atribui rota estática
     this.server.use(
