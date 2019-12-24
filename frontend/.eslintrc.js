@@ -32,11 +32,12 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-console': ['warn', { allow: ['tron'] }],
     "global-require": "off",
-    "no-param-reassign": "off",
-    "no-underscore-dangle": "off",
+    'no-param-reassign': "off",
+    'no-underscore-dangle': "off",
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'react/jsx-props-no-spreading': 'off'
+    'react/jsx-props-no-spreading': 'off',
+    'camelcase': 'off'
   },
   settings: {
     "import/resolver": {
