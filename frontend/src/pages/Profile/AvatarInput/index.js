@@ -40,7 +40,7 @@ export default function AvatarInput() {
       <label htmlFor="avatar">
         <img
           src={
-            preview || 'https://api.adorable.io/avatars/50/abott@adorable.png'
+            preview || 'https://api.adorable.io/avatars/150/abott@adorable.png'
           }
           alt=""
         />
